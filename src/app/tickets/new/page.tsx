@@ -16,6 +16,10 @@ const NewTicketPage = () => {
         { state.message && !state.success && (
           <p className='text-red-500 mb-4 text-center'>{state.message}</p>
         )}
+
+        { state.message && state.success && (
+          <p className='text-green-500 mb-4 text-center'>{state.message}</p>
+        )}
         <form className='space-y-4 text-gray-700' action={formAction}>
           <input
             className='w-full border border-gray-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400'
