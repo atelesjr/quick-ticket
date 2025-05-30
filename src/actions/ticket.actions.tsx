@@ -77,7 +77,7 @@ export async function getTickets() {
     );
 
     return tickets;
-    
+
   } catch (error) {
     logEvent(
       'Error occurred while fetching tickets',
@@ -87,5 +87,42 @@ export async function getTickets() {
       error
     );
     return [];
+  }
+}
+
+export async function getTicketById(ticketId: string) {
+  try {
+    const ticket = await prisma.ticket.findUnique({
+      where: { id: +ticketId }
+    });
+
+    if (!ticket) {
+      logEvent(
+        `Ticket not found with ID: ${ticketId}`,
+        'ticket',
+        { ticketId },
+        'warning'
+      );
+      return null;
+    }
+
+    // logEvent(
+    //   `Fetched ticket successfully with ID: ${ticket.id}`,
+    //   'ticket',
+    //   { ticketId: ticket.id },
+    //   'info'
+    // );
+
+    return ticket;
+
+  } catch (error) {
+    logEvent(
+      'Error occurred while fetching ticket by ID',
+      'ticket',
+      { ticketId },
+      'error',
+      error
+    );
+    return null;
   }
 }

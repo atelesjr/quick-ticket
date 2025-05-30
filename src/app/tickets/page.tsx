@@ -1,10 +1,11 @@
 import { getTickets } from "@/actions/ticket.actions";
-import { logEvent } from "@/utils/sentry";
+//import { logEvent } from "@/utils/sentry";
+import { getPriorityClass } from "@/utils/getPriorityClass";
 import Link from "next/link";
 
 const TicketsPage = async () => {
   const tickets = await getTickets();
-  console.log('tickets', tickets);
+
   return (
     <div className='min-h-screen bg-blue-50 p-8'>
       <h1 className='text-3xl font-bold text-blue-600 mb-8 text-center'>
@@ -30,7 +31,7 @@ const TicketsPage = async () => {
               {/* RightSide */}
               <div className="text-right space-y-2">
                 <div className="text-sm text-gray-500">
-                  Priority: <span>{ticket.priority}</span>
+                  Priority: <span className={ getPriorityClass(ticket.priority) }>{ticket.priority}</span>
                 </div>
                 <Link 
                   href={`/tickets/${ticket.id}`} 
