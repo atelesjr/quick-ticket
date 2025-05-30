@@ -2,22 +2,24 @@ import * as Sentry from '@sentry/nextjs';
 
 type LogLevel = 'fatal' | 'error' | 'warning' | 'info' | 'debug' | 'log';
 
-export function logToSentry(
+export function logEvent(
   message: string,
   category: string = 'general',
   data?: Record<string, any>,
-  LogLevel: LogLevel = 'info',
+  level: LogLevel = 'info',
   error?: unknown
 
 ) {
   Sentry.addBreadcrumb({
-    category,
     message,
-    level: LogLevel,
+    category,
+    level,
     data
   });
 
   if (error) {
     Sentry.captureException(error);
   } 
+
+  Sentry.captureMessage(message, level);
 }
