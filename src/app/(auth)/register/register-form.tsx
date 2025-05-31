@@ -14,7 +14,7 @@ const RegisterForm = () => {
   const [state, formAction] = useActionState(registerUser, initialState);
 
   useEffect(() => {
-    if (state.success) {
+    if (state?.success) {
       toast.success('Registration successful!');
       router.push('/tickets');
       router.refresh(); // Refresh the page to ensure the user is logged in
