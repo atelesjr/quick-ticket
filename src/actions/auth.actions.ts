@@ -61,8 +61,7 @@ export async function registerUser(
 
     // Sign and set auth token
     const token = await signAuthToken({ userId: user.id });
-    const response = await setAuthCookie(token);
-    console.log('SET COOKIE RESPONSE', response);
+    await setAuthCookie(token);
 
     logEvent(
       `User registered successfully: ${email}`,
@@ -89,15 +88,29 @@ export async function registerUser(
 }
 
 // Log user out and remove auth cookie
-export async function logoutUser(): Promise<{success: boolean;message: string;}> {
+export async function logoutUser(): Promise<{
+  success: boolean
+  message: string}> {
   try {
     await removeAuthCookie();
 
-    logEvent('User logged out successfully', 'auth', {}, 'info');
+    logEvent(
+      'User logged out successfully', 
+      'auth', 
+      {}, 
+      'info'
+    );
 
     return { success: true, message: 'Logout Successful' };
+
   } catch (error) {
-    logEvent('Unexpected error during logout', 'auth', {}, 'error', error);
+    logEvent(
+      'Unexpected error during logout', 
+      'auth', 
+      {}, 
+      'error', 
+      error
+    );
 
     return { success: false, message: 'Logout failed. Please try again' };
   }
@@ -154,6 +167,7 @@ export async function loginUser(
     await setAuthCookie(token);
 
     return { success: true, message: 'Login successful' };
+    
   } catch (error) {
     logEvent('Unexpected error during login', 'auth', {}, 'error', error);
 

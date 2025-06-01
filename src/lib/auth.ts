@@ -11,13 +11,12 @@ type Payload = {
 }
 export async function signAuthToken(payload: Payload) {
   try {
-    console.log('SECRET KEY', secretKey)
     const token = await new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
     .setExpirationTime('7d')
     .sign(secretKey);
-    console.log('TOKEN', token);
+
     return token; 
 
   } catch (error) {

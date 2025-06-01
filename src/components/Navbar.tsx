@@ -1,11 +1,11 @@
+import { getCurrentUser } from '@/lib/current-user';
 import Link from 'next/link';
-//import { getCurrentUser } from '@/lib/current-user';
-//import LogoutButton from './LogoutButton';
-
+import LogoutButton from './LogoutButton';
 
 const Navbar = async () => {
-  //const user = await getCurrentUser();
-  const user = {}; // Placeholder for user authentication logic
+  const user = await getCurrentUser();
+  console.log('USER?',user)
+ 
   return (
     <nav className='bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center'>
       <div>
@@ -28,7 +28,7 @@ const Navbar = async () => {
             >
               My Tickets
             </Link>
-            {/* <LogoutButton /> */}
+            <LogoutButton />
           </>
         ) : (
           <>
