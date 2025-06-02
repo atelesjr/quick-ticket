@@ -1,5 +1,4 @@
 'use server';
-
 import { prisma } from '@/db/prisma';
 import bcrypt from 'bcryptjs';
 import { logEvent } from '@/utils/sentry';
@@ -169,8 +168,14 @@ export async function loginUser(
     return { success: true, message: 'Login successful' };
     
   } catch (error) {
-    logEvent('Unexpected error during login', 'auth', {}, 'error', error);
+    logEvent(
+      'Unexpected error during login', 
+      'auth', 
+      {}, 
+      'error', 
+      error
+    );
 
-    return { success: false, message: 'Error during log in' };
+    return { success: false, message: 'Error during login' };
   }
 }

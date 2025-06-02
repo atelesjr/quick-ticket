@@ -17,10 +17,7 @@ const NewTicketForm = () => {
       router.push('/tickets');
     }
 
-    return () => {
-
-    }
-  }, [state.success])
+  }, [router, state.success])
 
 
   return (

@@ -1,26 +1,25 @@
 'use client';
-
 import { useActionState, useEffect } from 'react';
 import { logoutUser } from '@/actions/auth.actions';
 import { toast } from 'sonner';
-import { useRouter } from 'next/navigation';
 
 const LogoutButton = () => {
   const initialState = {
     success: false,
     message: '',
   };
-  const router = useRouter();
+
   const [state, formAction] = useActionState(logoutUser, initialState);
+
+  console.log('Logout state:', state);
 
   useEffect(() => {
     if (state.success) {
       toast.success('Logout successful');
-      router.push('/login'); // Redirect to login page after logout
     } else if (state.message) {
       toast.error(state.message);
     }
-  }, [state, router]);
+  }, [state]);
 
   return (
     <form action={formAction}>
