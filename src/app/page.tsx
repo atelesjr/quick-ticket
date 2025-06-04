@@ -1,9 +1,12 @@
+import { getCurrentUser } from "@/lib/current-user";
 import Link from "next/link";
+
 import { FaTicketAlt } from "react-icons/fa";
 //import { FaTicket } from "react-icons/fa6";
 
-
-const  Home = () =>{
+const  Home = async () =>{
+  const user = await getCurrentUser();
+  
   return (
     <main className="flex flex-col text-center items-center justify-center min-h-screen p-4">
       <FaTicketAlt className="mx-auto mb-4 text-red-600" size={60} />
@@ -15,13 +18,13 @@ const  Home = () =>{
       </p>
       <div className="flex flex-col md:flex-row gap-4 justify-center animate-slide opacity-0">
         <Link 
-          href="/tickets/new" 
+          href={ user ? "/tickets/new" : "/login" }
           className="bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 transition">
           {/* <FaTicket className="mr-2" /> */}
           Submit a Ticket
         </Link>
         <Link 
-          href="/tickets" 
+          href={ user ?"/tickets" : "/login" }
           className="bg-blue-100 text-gray-700 px-6 py-3 rounded shadow hover:bg-blue-200 transition">
           {/* <FaTicket className="mr-2" /> */}
             View Tickets

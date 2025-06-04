@@ -120,6 +120,19 @@ export async function getTicketById(ticketId: string) {
       where: { id: +ticketId }
     });
 
+    const user = await getCurrentUser();
+
+    if (!ticket || ticket.userId !== user?.id) {
+      logEvent(
+        'Unauthorized ticket close attempt',
+        'ticket',
+        { ticketId, userId: user?.id },
+        'warning'
+      );
+
+      return null;
+    }
+
     if (!ticket) {
       logEvent(
         `Ticket not found with ID: ${ticketId}`,
@@ -129,13 +142,6 @@ export async function getTicketById(ticketId: string) {
       );
       return null;
     }
-
-    // logEvent(
-    //   `Fetched ticket successfully with ID: ${ticket.id}`,
-    //   'ticket',
-    //   { ticketId: ticket.id },
-    //   'info'
-    // );
 
     return ticket;
 
