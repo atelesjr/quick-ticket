@@ -4,12 +4,11 @@
 This is simple application to create and list tickets set with log events - Sentry. 
  
 #Stack: 
-Next.js, React.js 
-database: Neon, Prisma 
-CSS: Tailwind 
-Database: Prisma ORM 
-Monitory: Sentry 
-Authentication: JWT 
+- Next.js, React.js 
+- database: Neon, Prisma ORM
+- CSS: Tailwind  
+- Monitory: Sentry 
+- Authentication: JWT 
 
 
 ```bash
