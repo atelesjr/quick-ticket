@@ -2,6 +2,7 @@
 ## Quick-ticket
 
 This is simple application to create and list tickets set with log events - Sentry. 
+
 Stack:
 Next.js, React.js
 database: Neon, Prisma
