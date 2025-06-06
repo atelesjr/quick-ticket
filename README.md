@@ -2,14 +2,14 @@
 ## Quick-ticket
 
 This is simple application to create and list tickets set with log events - Sentry. 
-
-Stack:
-Next.js, React.js
-database: Neon, Prisma
-CSS: Tailwind
-Database: Prisma ORM
-Monitory: Sentry
-Authentication: JWT
+ 
+Stack: 
+Next.js, React.js 
+database: Neon, Prisma 
+CSS: Tailwind 
+Database: Prisma ORM 
+Monitory: Sentry 
+Authentication: JWT 
 
 
 ```bash
@@ -21,8 +21,13 @@ pnpm dev
 # or
 bun dev
 ```
+[Quick-ticket](https://github.com/atelesjr/quick-ticket/blob/master/public/home.png)
+[Quick-ticket](https://github.com/atelesjr/quick-ticket/blob/master/public/login.png)
+[Quick-ticket](https://github.com/atelesjr/quick-ticket/blob/master/public/tickets.png)
+[Quick-ticket](https://github.com/atelesjr/quick-ticket/blob/master/public/ticket-item.png)
+[Quick-ticket](https://github.com/atelesjr/quick-ticket/blob/master/public/ticket-new.png)
+[Quick-ticket](https://github.com/atelesjr/quick-ticket/blob/master/public/register.png)
 
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-![Weather-app](https://github.com/atelesjr/quick-ticket/blob/master/public/home.png)
+
