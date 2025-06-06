@@ -1,3 +1,4 @@
+'use server';
 import { verifyAuthToken, getAuthCookie } from './auth';
 import { prisma } from '@/db/prisma';
 
@@ -14,9 +15,9 @@ export async function getCurrentUser() {
 
     const payload = (await verifyAuthToken(token)) as AuthPayload;
 
-      if (!payload?.userId) {
-        return null;
-      }
+    if (!payload?.userId) {
+      return null;
+    }
 
     const user = await prisma.user.findUnique({
       where: { id: payload.userId },

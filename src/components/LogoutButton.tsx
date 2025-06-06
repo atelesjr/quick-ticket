@@ -11,8 +11,6 @@ const LogoutButton = () => {
 
   const [state, formAction] = useActionState(logoutUser, initialState);
 
-  console.log('Logout state:', state);
-
   useEffect(() => {
     if (state.success) {
       toast.success('Logout successful');
